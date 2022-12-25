@@ -9,15 +9,30 @@ function createGridCells(n) {
             gridcell.style.height= 500/n-2+'px';
 
             gridcell.classList.add('gridcell'); // give the id for css manipulation
-
-            gridcontainer.appendChild(gridcell);
-         
+            gridcell.dataset.shade=180;  // set initial data for each cell (meanse rgb(180,180,180))
             
+            // Add a mouseover event for shading to each grid cell created.
+            gridcell.addEventListener('mouseover', function(){
+                // for each mouseover, decrease the shade data value 
+                let currentShade= this.dataset.shade-30; 
+                if (currentShade<0) {currentShade=0;}
+
+                //... and apply it to the object
+                this.style.backgroundColor= 'rgb('+currentShade+', '+currentShade+', '+ currentShade+')'; //'black';
+                
+                // also save the data set, for reference on subsequent mouseover actions.
+                this.dataset.shade= currentShade;
+            })
+            
+            gridcontainer.appendChild(gridcell);
         }
     }
 }
 
-createGridCells(16);
+function colorCell(grid){
+    
+}
+createGridCells(20);
 
 //const container= document.getElementById('grids-container');
 //const grid= document.createElement('p');

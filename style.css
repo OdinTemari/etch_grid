@@ -15,8 +15,12 @@
 
 }
 
+.gridcell:hover {
+    /*background-color: rgb(0, 0, 0);*/
+}
+
 .gridcell {
     display: inline-block;
     border: 1px solid black;
-    border-radius: 5px;
+    /* border-radius: 5px; */
 }
